@@ -1,0 +1,16 @@
+.materials-checkout-page .place-order-btn {
+  background: #5a7a4a;
+}
+
+.materials-checkout-page .place-order-btn:hover:not(:disabled) {
+  background: #4a6a3a;
+}
+
+.materials-checkout-page .payment-option.selected {
+  border-color: #5a7a4a;
+  background: #f4f8f2;
+}
+
+.materials-checkout-page .summary-grand-total {
+  border-top-color: #5a7a4a;
+}

@@ -1,0 +1,45 @@
+.material-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.material-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e0ddd5;
+  border-radius: 10px;
+  padding: 6px 12px;
+}
+
+.material-qty-controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f0ea;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.material-qty-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.material-action-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.material-buy-now-btn {
+  flex: 1;
+  min-width: 140px;
+}
+
+.out-of-stock {
+  color: #dc3545;
+}

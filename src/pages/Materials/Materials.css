@@ -1,0 +1,24 @@
+.material-stock-label {
+  font-size: 12px;
+  color: #28a745;
+  margin: 4px 0;
+}
+
+.material-short-desc {
+  font-size: 13px;
+  color: #777;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.material-card-actions {
+  margin-top: 10px;
+}
+
+.material-view-btn {
+  display: none;
+}
+
+.materials-main .search-input-container {
+  margin-bottom: 20px;
+}

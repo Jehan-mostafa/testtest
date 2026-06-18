@@ -1,0 +1,21 @@
+.filters-card {
+  background: #f8f9fa;
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin: 4px;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.filter-btn.active {
+  background: #212529;
+  color: white;
+  border-color: #212529;
+}

@@ -1,0 +1,46 @@
+.materials-success-page .success-icon {
+  background: linear-gradient(135deg, #5a7a4a, #7a9a6a);
+  box-shadow: 0 6px 20px rgba(90, 122, 74, 0.3);
+}
+
+.materials-success-page .detail-value.order-id,
+.materials-success-page .detail-value.total-amount {
+  color: #5a7a4a;
+}
+
+.materials-shop-btn {
+  background: #5a7a4a !important;
+  border-color: #5a7a4a !important;
+}
+
+.materials-shop-btn:hover {
+  background: #4a6a3a !important;
+  border-color: #4a6a3a !important;
+}
+
+.materials-ordered-list {
+  text-align: left;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: #fafaf8;
+  border-radius: 10px;
+  border: 1px solid #e8e8e0;
+}
+
+.materials-ordered-list h4 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: #333;
+}
+
+.material-ordered-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.material-ordered-item:last-child {
+  border-bottom: none;
+}

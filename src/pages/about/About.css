@@ -1,0 +1,231 @@
+/* ════════════════════════════════════════
+   About.css
+   ════════════════════════════════════════ */
+
+/* ── Hero ───────────────────────────────── */
+.about-hero {
+  background: linear-gradient(160deg, #F5EFE6 0%, #EDE3D5 100%);
+  padding: var(--space-10) 0 var(--space-9);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-hero-inner {
+  max-width: 720px;
+}
+
+.about-hero-title {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.about-hero-desc {
+  max-width: 540px;
+}
+
+/* ── Mission ────────────────────────────── */
+.about-mission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.about-mission-text {
+  max-width: 520px;
+}
+
+.about-mission-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.about-mission-img-wrap {
+  position: relative;
+  width: 340px;
+  height: 380px;
+}
+
+.about-mission-img-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, #EDE3D5, #C8B09A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-mission-badge {
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  background: var(--color-bg-dark);
+  color: white;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: var(--shadow-md);
+}
+
+.about-badge-number {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  line-height: 1;
+}
+
+.about-badge-text {
+  font-size: 11px;
+  color: #8C7D6E;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Values ─────────────────────────────── */
+.about-values-section {
+  background: var(--color-bg-warm);
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.about-value-card {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-value-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.about-value-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.about-value-desc {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+/* ── Team ───────────────────────────────── */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.about-team-card {
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.about-team-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(196,98,45,0.25);
+}
+
+.about-team-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.about-team-role {
+  font-size: 12.5px;
+  color: var(--color-text-light);
+}
+
+/* ── Join CTA ───────────────────────────── */
+.about-join {
+  background: var(--color-bg-dark);
+}
+
+.about-join-inner {
+  max-width: 640px;
+}
+
+.about-join-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.about-join-outline-btn {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: #C9B9A8;
+}
+.about-join-outline-btn:hover {
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── Responsive ────────────────────────── */
+@media (max-width: 1024px) {
+  .about-values-grid,
+  .about-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-mission {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+  .about-mission-visual {
+    order: -1;
+  }
+  .about-mission-img-wrap {
+    width: 100%;
+    max-width: 320px;
+    height: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .about-values-grid,
+  .about-team-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-join-actions {
+    flex-direction: column;
+  }
+  .about-join-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

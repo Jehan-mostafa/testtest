@@ -18,6 +18,8 @@ import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 import Materials from "./pages/Materials/Materials";
 import MaterialDetails from "./pages/MaterialDetails/MaterialDetails";
 import { ProfilePage } from "./pages/profile/ProfilePage";
+import { I18nDomTranslator } from "./components/I18nDomTranslator";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 
 
 function App() {
@@ -26,8 +28,10 @@ function App() {
   return (
     <FavouritesProvider>
       <CartProvider>
+          <I18nDomTranslator />
+          <LanguageSwitcher />
           <Routes>
-          {/* ✅ Public Routes - متاحة للكل */}
+    
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
@@ -39,27 +43,27 @@ function App() {
           <Route path="/materials/checkout" element={<Navigate to="/checkout" replace />} />
           <Route path="/materials/order-success" element={<Navigate to="/order-success" replace />} />
           <Route path="/materials/:id" element={<MaterialDetails />} />
-          
+
           {/* ✅ Protected Routes - تتطلب تسجيل الدخول */}
-          <Route 
-            path="/favourites" 
-            element={isLoggedIn ? <Favourites /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/favourites"
+            element={isLoggedIn ? <Favourites /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/cart" 
-            element={isLoggedIn ? <ShoppingCart /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/cart"
+            element={isLoggedIn ? <ShoppingCart /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/checkout" 
-            element={isLoggedIn ? <Checkout /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/checkout"
+            element={isLoggedIn ? <Checkout /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/order-success" 
-            element={isLoggedIn ? <OrderSuccess /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/order-success"
+            element={isLoggedIn ? <OrderSuccess /> : <Navigate to="/login" replace />}
           />
-          <Route 
-            path="/profile" 
-            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" replace />} 
+          <Route
+            path="/profile"
+            element={isLoggedIn ? <ProfilePage /> : <Navigate to="/login" replace />}
           />
 
           {/* ✅ Auth Routes - لو مسجل دخول يروح للـ Home */}

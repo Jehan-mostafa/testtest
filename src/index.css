@@ -64,6 +64,49 @@ body {
   margin: 0;
 }
 
+.language-switcher {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 9999;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(120, 90, 60, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+}
+
+.language-switcher button {
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #4b3728;
+  background: transparent;
+  font: 700 12px/1 var(--sans);
+  cursor: pointer;
+}
+
+.language-switcher button.active {
+  color: #fff;
+  background: #8f5d3d;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}
+
+[dir="rtl"] .language-switcher {
+  right: auto;
+  left: 14px;
+}
+
 h1,
 h2 {
   font-family: var(--heading);

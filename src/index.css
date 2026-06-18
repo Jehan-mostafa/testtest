@@ -2,6 +2,8 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  --surface: #ffffff;
+  --surface-muted: #f5efe6;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -30,24 +32,20 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+[data-theme="dark"] {
+  --text: #d7cfc5;
+  --text-h: #fff8ef;
+  --bg: #16110d;
+  --surface: #211913;
+  --surface-muted: #2c2119;
+  --border: #4a392c;
+  --code-bg: #2c2119;
+  --accent: #e8a87c;
+  --accent-bg: rgba(232, 168, 124, 0.14);
+  --accent-border: rgba(232, 168, 124, 0.45);
+  --social-bg: rgba(255, 255, 255, 0.08);
+  --shadow:
+    rgba(0, 0, 0, 0.5) 0 10px 15px -3px, rgba(0, 0, 0, 0.35) 0 4px 6px -2px;
 }
 
 #root {
@@ -62,9 +60,10 @@
 
 body {
   margin: 0;
+  background: var(--bg);
 }
 
-.language-switcher {
+.app-top-controls {
   position: fixed;
   top: 14px;
   right: 14px;
@@ -83,6 +82,11 @@ body {
   -o-border-radius: 999px;
 }
 
+.language-switcher {
+  display: inline-flex;
+  gap: 4px;
+}
+
 .language-switcher button {
   border: 0;
   border-radius: 999px;
@@ -98,13 +102,353 @@ body {
   background: #8f5d3d;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-left: 1px solid rgba(120, 90, 60, 0.18);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #4b3728;
+  background: transparent;
+  font: 700 12px/1 var(--sans);
+  cursor: pointer;
+}
+
+.theme-toggle__icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: inset -4px -2px 0 rgba(255, 255, 255, 0.75);
+}
+
+[data-theme="dark"] .theme-toggle__icon {
+  box-shadow:
+    0 0 0 2px rgba(232, 168, 124, 0.18),
+    0 0 8px rgba(232, 168, 124, 0.38);
+}
+
 [dir="rtl"] body {
   text-align: right;
 }
 
-[dir="rtl"] .language-switcher {
+[dir="rtl"] .app-top-controls {
   right: auto;
   left: 14px;
+}
+
+[data-theme="dark"] .app-top-controls {
+  border-color: rgba(232, 168, 124, 0.24);
+  background: rgba(33, 25, 19, 0.94);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .language-switcher button,
+[data-theme="dark"] .theme-toggle {
+  color: #f5efe6;
+}
+
+[data-theme="dark"] .language-switcher button.active {
+  color: #24170f;
+  background: #e8a87c;
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-left-color: rgba(232, 168, 124, 0.24);
+}
+
+[data-theme="dark"] body,
+[data-theme="dark"] .page-wrapper,
+[data-theme="dark"] .products-page,
+[data-theme="dark"] .cart-page,
+[data-theme="dark"] .checkout-page,
+[data-theme="dark"] .favourites-page,
+[data-theme="dark"] .product-details-page,
+[data-theme="dark"] .profile-page,
+[data-theme="dark"] .auth-page,
+[data-theme="dark"] .auth-panel {
+  color: var(--text);
+  background: var(--bg) !important;
+}
+
+[data-theme="dark"] .hme-nav,
+[data-theme="dark"] .hme-mobile-menu,
+[data-theme="dark"] .auth-tabs,
+[data-theme="dark"] .filters-card,
+[data-theme="dark"] .order-summary-card,
+[data-theme="dark"] .cart-item,
+[data-theme="dark"] .summary,
+[data-theme="dark"] .checkout-form,
+[data-theme="dark"] .favourites-item,
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .profile-hero-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .market-product-card,
+[data-theme="dark"] .home-product-card,
+[data-theme="dark"] .home-category-card,
+[data-theme="dark"] .card,
+[data-theme="dark"] .contact-form-wrap,
+[data-theme="dark"] .contact-success,
+[data-theme="dark"] .faq-still-help,
+[data-theme="dark"] .review-card,
+[data-theme="dark"] .related-card {
+  color: var(--text) !important;
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .display-xl,
+[data-theme="dark"] .display-lg,
+[data-theme="dark"] .display-md,
+[data-theme="dark"] .auth-title,
+[data-theme="dark"] .hme-logo-text,
+[data-theme="dark"] .profile-hero-name,
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .market-product-name,
+[data-theme="dark"] .home-product-name,
+[data-theme="dark"] .cart-item-name,
+[data-theme="dark"] .favourites-title {
+  color: var(--text-h) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] label,
+[data-theme="dark"] small,
+[data-theme="dark"] li,
+[data-theme="dark"] strong,
+[data-theme="dark"] .lead,
+[data-theme="dark"] .auth-subtitle,
+[data-theme="dark"] .profile-hero-subtitle,
+[data-theme="dark"] .market-product-seller,
+[data-theme="dark"] .home-product-seller,
+[data-theme="dark"] .cart-item-artist,
+[data-theme="dark"] .summary-row,
+[data-theme="dark"] .detail-row {
+  color: inherit;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .input-group,
+[data-theme="dark"] .auth-input,
+[data-theme="dark"] .auth-textarea,
+[data-theme="dark"] .search-input,
+[data-theme="dark"] .coupon-input,
+[data-theme="dark"] .review-input,
+[data-theme="dark"] .review-textarea,
+[data-theme="dark"] .contact-input,
+[data-theme="dark"] .contact-select,
+[data-theme="dark"] .contact-textarea,
+[data-theme="dark"] .rating-select {
+  color: var(--text-h) !important;
+  background: var(--surface-muted) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #a99a8c !important;
+}
+
+[data-theme="dark"] .hme-nav-links a,
+[data-theme="dark"] .hme-mobile-menu a,
+[data-theme="dark"] .hme-icon-btn,
+[data-theme="dark"] .hme-user-name,
+[data-theme="dark"] .hme-dropdown-item {
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .hme-nav-links a:hover,
+[data-theme="dark"] .hme-icon-btn:hover,
+[data-theme="dark"] .hme-avatar-btn:hover,
+[data-theme="dark"] .hme-dropdown-item:hover {
+  background: var(--surface-muted) !important;
+  color: #e8a87c !important;
+}
+
+[data-theme="dark"] .hme-dropdown,
+[data-theme="dark"] .auth-tab.active,
+[data-theme="dark"] .role-card.selected,
+[data-theme="dark"] .social-btn,
+[data-theme="dark"] .step-dot {
+  color: var(--text-h) !important;
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .role-card,
+[data-theme="dark"] .auth-btn-secondary,
+[data-theme="dark"] .filter-chip,
+[data-theme="dark"] .quantity-controls,
+[data-theme="dark"] .product-thumb,
+[data-theme="dark"] .market-product-thumb,
+[data-theme="dark"] .home-product-thumb,
+[data-theme="dark"] .product-main-image,
+[data-theme="dark"] .related-thumb {
+  color: var(--text) !important;
+  background: var(--surface-muted) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .home-stats-bar {
+  background: #211913 !important;
+  border-color: #4a392c !important;
+}
+
+[data-theme="dark"] .home-stat {
+  border-color: #4a392c !important;
+}
+
+[data-theme="dark"] .home-stat-value,
+[data-theme="dark"] .auth-hero-stat strong {
+  color: #ffd0a8 !important;
+}
+
+[data-theme="dark"] .home-stat-label,
+[data-theme="dark"] .auth-hero-stat span {
+  color: #d7cfc5 !important;
+}
+
+[data-theme="dark"] .auth-hero-stat {
+  background: rgba(22, 17, 13, 0.58) !important;
+  border-color: rgba(255, 208, 168, 0.28) !important;
+}
+
+[data-theme="dark"] .section,
+[data-theme="dark"] .home-featured-section {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .section-header,
+[data-theme="dark"] .home-section-header {
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .section-label {
+  color: #e8a87c !important;
+}
+
+[data-theme="dark"] .display-md,
+[data-theme="dark"] .home-section-header h2,
+[data-theme="dark"] .section-header h2 {
+  color: var(--text-h) !important;
+}
+
+[data-theme="dark"] .home-category-info,
+[data-theme="dark"] .home-product-info {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .home-category-name,
+[data-theme="dark"] .home-product-name {
+  color: var(--text-h) !important;
+}
+
+[data-theme="dark"] .home-category-count,
+[data-theme="dark"] .home-product-seller,
+[data-theme="dark"] .home-product-rating,
+[data-theme="dark"] .home-product-reviews {
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .home-product-price {
+  color: #ffd0a8 !important;
+}
+
+[data-theme="dark"] .home-product-thumb {
+  background: linear-gradient(145deg, #34271d, #241a13) !important;
+}
+
+[data-theme="dark"] .home-product-wish,
+[data-theme="dark"] .home-product-thumb button {
+  color: #ffd0a8 !important;
+  background: rgba(255, 208, 168, 0.12) !important;
+  border: 1px solid rgba(255, 208, 168, 0.22) !important;
+}
+
+[data-theme="dark"] .about-hero {
+  background: linear-gradient(160deg, #211913 0%, #16110d 100%) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .about-hero-title,
+[data-theme="dark"] .about-mission h2,
+[data-theme="dark"] .about-values-section h2,
+[data-theme="dark"] .about-value-title,
+[data-theme="dark"] .about-team-name {
+  color: var(--text-h) !important;
+}
+
+[data-theme="dark"] .about-hero-desc,
+[data-theme="dark"] .about-mission .lead,
+[data-theme="dark"] .about-mission p,
+[data-theme="dark"] .about-value-desc,
+[data-theme="dark"] .about-team-role {
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .about-values-section {
+  background: var(--bg) !important;
+}
+
+[data-theme="dark"] .about-value-card,
+[data-theme="dark"] .about-team-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .about-mission-img-placeholder {
+  background: linear-gradient(145deg, #34271d, #241a13) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+[data-theme="dark"] .about-mission-badge {
+  background: #211913 !important;
+  border: 1px solid var(--border) !important;
+}
+
+[data-theme="dark"] .about-badge-number {
+  color: #ffd0a8 !important;
+}
+
+[data-theme="dark"] .about-badge-text {
+  color: #d7cfc5 !important;
+}
+
+[data-theme="dark"] .btn-outline,
+[data-theme="dark"] .btn-ghost,
+[data-theme="dark"] .back-btn,
+[data-theme="dark"] .continue-shopping-btn {
+  color: var(--text-h) !important;
+  border-color: var(--border) !important;
+  background: transparent !important;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .auth-btn-primary,
+[data-theme="dark"] .market-product-btn,
+[data-theme="dark"] .checkout-btn,
+[data-theme="dark"] .place-order-btn,
+[data-theme="dark"] .shop-now-btn,
+[data-theme="dark"] .add-to-cart-btn {
+  color: #fff !important;
+  background: #c4622d !important;
+}
+
+[data-theme="dark"] svg {
+  color: currentColor;
 }
 
 h1,

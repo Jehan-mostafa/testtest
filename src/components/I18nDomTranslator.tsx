@@ -107,7 +107,7 @@ function translateWithFallback(t: (key: string) => string, value: string) {
 function shouldSkip(node: Node) {
   const parent = node.parentElement;
   if (!parent) return true;
-  return Boolean(parent.closest("script, style, svg, code, pre, textarea"));
+  return Boolean(parent.closest("script, style, svg, code, pre, textarea, [data-i18n-managed]"));
 }
 
 function translateTree(root: ParentNode, language: string, t: (key: string) => string) {
@@ -133,6 +133,8 @@ function translateTree(root: ParentNode, language: string, t: (key: string) => s
   });
 
   document.querySelectorAll<HTMLElement>("[placeholder], [title], [aria-label]").forEach((element) => {
+    if (element.closest("[data-i18n-managed]")) return;
+
     translatedAttributes.forEach((attribute) => {
       const originalKey = originalAttributeKeys[attribute];
       const current = element.getAttribute(attribute);

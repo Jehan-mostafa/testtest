@@ -482,6 +482,10 @@ const ar = {
   "Language": "اللغة",
   "English": "English",
   "Arabic": "العربية",
+  "Dark": "داكن",
+  "Light": "فاتح",
+  "Switch to dark mode": "التبديل إلى الوضع الداكن",
+  "Switch to light mode": "التبديل إلى الوضع الفاتح",
 };
 
 i18n.use(initReactI18next).init({

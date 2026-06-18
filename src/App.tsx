@@ -20,6 +20,7 @@ import MaterialDetails from "./pages/MaterialDetails/MaterialDetails";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { I18nDomTranslator } from "./components/I18nDomTranslator";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 
 function App() {
@@ -29,7 +30,10 @@ function App() {
     <FavouritesProvider>
       <CartProvider>
           <I18nDomTranslator />
-          <LanguageSwitcher />
+          <div className="app-top-controls">
+            <LanguageSwitcher />
+            <ThemeToggle />
+          </div>
           <Routes>
     
           <Route path="/" element={<Home />} />

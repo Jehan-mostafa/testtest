@@ -8,6 +8,7 @@ const {
   getProducts,
   getProductById,
   createProduct,
+  getGiftRecommendations,
   updateProduct,
   deleteProduct,
   addReview,
@@ -16,6 +17,7 @@ const {
 } = require("../controller/productController");
 
 router.get("/", getProducts);
+router.post("/recommendations", getGiftRecommendations);
 router.get("/:id", getProductById);
 router.post("/", productUpload.single("image"), createProduct);
 router.put("/:id", productUpload.single("image"), updateProduct);

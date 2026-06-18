@@ -22,6 +22,17 @@ function parseCatalogBody(body) {
     }
   }
 
+  if (typeof parsed.tags === "string") {
+    try {
+      parsed.tags = JSON.parse(parsed.tags);
+    } catch {
+      parsed.tags = parsed.tags
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
+  }
+
   return parsed;
 }
 

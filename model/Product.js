@@ -7,6 +7,13 @@ const reviewSchema = new mongoose.Schema({
   comment: String,
 });
 
+const PRODUCT_TAGS = {
+  occasions: ["birthday", "wedding", "anniversary", "graduation"],
+  gender: ["male", "female"],
+  age: ["child", "teen", "adult"],
+  type: ["gift", "decor", "fashion", "accessory"],
+};
+
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -40,6 +47,10 @@ const productSchema = new mongoose.Schema(
     material: String,
     inStock: Number,
     image: String,
+    tags: {
+      type: [String],
+      default: [],
+    },
 
     description: String,
     aboutArtist: String,
@@ -57,4 +68,7 @@ const productSchema = new mongoose.Schema(
   },
 );
 
-module.exports = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", productSchema);
+Product.PRODUCT_TAGS = PRODUCT_TAGS;
+
+module.exports = Product;

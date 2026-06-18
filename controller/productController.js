@@ -72,7 +72,10 @@ exports.getProductById = async (req, res) => {
 // ======================
 exports.createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    const body = parseCatalogBody(req.body);
+    applyUploadedImage(body, req.file, "products");
+
+    const product = await Product.create(body);
     await product.populate("category"); // ← populate بعد الإنشاء عشان يظهر اسم الـ category مش بس الـ ID
 
     res.status(201).json({
@@ -81,6 +84,39 @@ exports.createProduct = async (req, res) => {
     });
   } catch (error) {
     res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.getGiftRecommendations = async (req, res) => {
+  try {
+    const { occasion, gender, age, budget } = req.body;
+    const tags = [];
+    const filter = {};
+
+    if (occasion) tags.push(occasion);
+    if (gender) tags.push(gender);
+    if (age) tags.push(age);
+
+    if (tags.length > 0) {
+      filter.tags = { $all: tags };
+    }
+
+    if (budget) {
+      filter.price = { $lte: Number(budget) };
+    }
+
+    const products = await Product.find(filter).populate("category").limit(12);
+
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products.map(formatCatalogItem),
+    });
+  } catch (error) {
+    res.status(500).json({
       success: false,
       message: error.message,
     });

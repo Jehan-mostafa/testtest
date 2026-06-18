@@ -94,25 +94,42 @@ exports.getGiftRecommendations = async (req, res) => {
   try {
     const { occasion, gender, age, budget } = req.body;
     const tags = [];
-    const filter = {};
+    const baseFilter = {};
 
     if (occasion) tags.push(occasion);
     if (gender) tags.push(gender);
     if (age) tags.push(age);
 
-    if (tags.length > 0) {
-      filter.tags = { $all: tags };
-    }
-
     if (budget) {
-      filter.price = { $lte: Number(budget) };
+      baseFilter.price = { $lte: Number(budget) };
     }
 
-    const products = await Product.find(filter).populate("category").limit(12);
+    let matchType = "budget";
+    let filter = { ...baseFilter };
+
+    if (tags.length > 0) {
+      filter = { ...baseFilter, tags: { $all: tags } };
+      matchType = "exact";
+    }
+
+    let products = await Product.find(filter).populate("category").limit(12);
+
+    if (products.length === 0 && tags.length > 0) {
+      filter = { ...baseFilter, tags: { $in: tags } };
+      matchType = "partial";
+      products = await Product.find(filter).populate("category").limit(12);
+    }
+
+    if (products.length === 0) {
+      filter = baseFilter;
+      matchType = "budget";
+      products = await Product.find(filter).populate("category").limit(12);
+    }
 
     res.status(200).json({
       success: true,
       count: products.length,
+      matchType,
       data: products.map(formatCatalogItem),
     });
   } catch (error) {

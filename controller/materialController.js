@@ -10,7 +10,7 @@ const DEFAULT_MATERIALS = [
   {
     name: "Fabric",
     description: "High-quality cotton fabric suitable for handmade crafts and sewing projects.",
-    price: 120, 
+    price: 120,
     stock: 50,
     category: "Textiles",
     image: "",

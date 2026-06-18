@@ -67,6 +67,15 @@ export async function getProducts(params = {}) {
   }
 }
 
+export async function getGiftRecommendations(payload) {
+  try {
+    const response = await client.post("/products/recommendations", payload);
+    return (response.data?.data ?? []).map(normalizeProduct).filter(Boolean);
+  } catch (error) {
+    throw new Error(normalizeError(error));
+  }
+}
+
 export async function getProduct(productId) {
   try {
     const response = await client.get(`/products/${productId}`);

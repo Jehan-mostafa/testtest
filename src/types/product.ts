@@ -11,6 +11,7 @@ export interface Product {
   category: string;
   material?: string;
   inStock?: number;
+  tags?: string[];
   description?: string;
   specifications?: {
     dimensions?: string;

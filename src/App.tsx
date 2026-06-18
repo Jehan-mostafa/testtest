@@ -3,6 +3,7 @@ import './App.css'
 import About from './pages/about/About';
 import Contact from './pages/contacts/Contact';
 import FAQ from './pages/faq/FAQ';
+import GiftQuiz from './pages/GiftQuiz/GiftQuiz';
 import Home from './pages/home/Home';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Products from './pages/Products/Products';
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/gift-quiz" element={<GiftQuiz />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contacts" element={<Contact />} />
           <Route path="/product/:id" element={<ProductDetails />} />
